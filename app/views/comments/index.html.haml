@@ -1,0 +1,68 @@
+!!! 5
+%html
+  %head
+    %title #{@title}
+    %link{:rel=>"stylesheet",:type=>"text/css",:href=>"assets/comments.css"}
+    %link{:rel=>"stylesheet",:type=>"text/css",:href=>"http://fonts.googleapis.com/css?family=Kameron:700,400"}
+    %script{:type=>"text/javascript", :src=>"assets/application.js"}
+  %body
+    #container
+      .nav
+        -if user_signed_in?
+          Welcome 
+          %span.user #{current_user.email}. 
+          %a{:href =>destroy_user_session_path}Log out
+        -else
+          %a{:href =>new_user_registration_path}Sign up
+          %span #{'|'}
+          %a{:href =>new_user_session_path}Log in
+         
+          
+        
+      %h1 What do you think of this picture?
+      %img{:src=>"http://drinkingcinema.com/uli/GMk.jpeg",:alt=>"Two Bros Partying"}
+      %h2.title Comments
+      .comments
+        -@comments.each do |comment|
+          %div.comment
+            %hr
+            -unless comment.title.empty?
+              %div.title #{comment.title}
+            %div.user
+              %span.txt by
+              %span.name.txt  #{comment.name}
+              %span.txt on
+              %span.date.txt #{comment.date}
+            %div.content #{comment.comment}
+      
+      .formContainer
+        -if user_signed_in?
+          = form_tag :controller=>"/comments" do
+            = field_set_tag do
+              .hdr Leave a comment
+              %ul
+                %li Title
+                %li.field 
+                  = text_field_tag :'comment[title]'
+                %li Comment
+                %li.field 
+                  = text_area_tag :'comment[comment]'
+                %li
+                  = submit_tag 'Submit', :class=>"black"
+        -else
+          .shim
+          .message 
+            %a{:href =>new_user_session_path}Log in 
+            %span to leave a comment
+          .form
+            .hdr Leave a comment
+            %ul
+              %li Title
+              %li
+                %input{:type=>'text'}
+              %li Comment
+              %li
+                %textarea
+              %li
+                %input{:type=>'submit',:class=>'black'}
+                

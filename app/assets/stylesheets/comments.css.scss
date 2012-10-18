@@ -1,0 +1,320 @@
+// Place all the styles related to the Comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$grey: #888;
+$black: #000;
+$fontFamily: 'Kameron', georgia, serif !important;
+$yellowBackground: #FDD91E;
+$marginLeft: 20px;
+$bootstrapBlue: #049cdb;
+$greyBackground: #e5e5e5;
+
+@mixin radius{
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
+
+@mixin shadow{
+  -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.8);
+     -moz-box-shadow: 0px 0px 3px rgba(0,0,0,0.8);
+          box-shadow: 0px 0px 3px rgba(0,0,0,0.8);
+}
+
+@mixin shadowBig{
+  -webkit-box-shadow: 1px 1px 8px rgba(0,0,0,0.8);
+     -moz-box-shadow: 1px 1px 8px rgba(0,0,0,0.8);
+          box-shadow: 1px 1px 8px rgba(0,0,0,0.8);
+}
+
+@mixin transitionAll218{
+  -webkit-transition: all 0.218s; /* Safari and Chrome */
+     -moz-transition: all 0.218s; /* Firefox 4 */
+       -o-transition: all 0.218s; /* Opera */
+          transition: all 0.218s;
+}
+
+@mixin textShadow{
+  text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+
+@mixin userSelectNone{
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+@mixin inline{
+  display: inline-block;
+  *display:inline;
+  *zoom:1;
+}
+
+@mixin button{
+  @include inline;
+  text-align: center;
+  color: #555;
+  font-weight: bold;
+  height: 27px;
+  padding: 0 8px;
+  text-transform: uppercase;
+  @include radius;
+  @include transitionAll218;
+  @include userSelectNone;
+  &:focus{
+    outline-width: 0px !important;
+  }
+  &.black{
+    border: 1px solid #444444;
+    color: #fff;
+    text-shadow: 0 1px rgba(0,0,0,0.3);
+    background-color: #222222;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+       -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+         -o-box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+            box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#555555),to(#222222));
+    background-image: -webkit-linear-gradient(top,#555555,#222222);
+    background-image: -moz-linear-gradient(top,#555555,#222222);
+    background-image: -ms-linear-gradient(top,#555555,#222222);
+    background-image: -o-linear-gradient(top,#555555,#222222);
+    background-image: linear-gradient(top,#555555,#222222);
+    
+    &:hover{
+      border: 1px solid #333333;
+      text-shadow: 0 1px rgba(0,0,0,0.5);
+      background-color: #333333;
+      -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.4);
+         -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.4);
+           -o-box-shadow: 0 1px 1px rgba(0,0,0,0.4);
+              box-shadow: 0 1px 1px rgba(0,0,0,0.4);
+      background-image: -webkit-gradient(linear,left top,left bottom,from(#555555),to(#111111));
+      background-image: -webkit-linear-gradient(top,#555555,#111111);
+      background-image: -moz-linear-gradient(top,#555555,#111111);
+      background-image: -ms-linear-gradient(top,#555555,#111111);
+      background-image: -o-linear-gradient(top,#555555,#111111);
+      background-image: linear-gradient(top,#555555,#111111);
+    }
+    &:active{
+      background-color: #333333;
+      -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
+         -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
+              box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
+    }
+    
+  }
+  
+  
+  
+}
+
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+html,body{
+  height: 100%;
+  font-family: $fontFamily;
+  background: $yellowBackground;
+  color: $black;
+  @include textShadow;
+}
+
+#container{
+  position: relative;
+  margin: 0 auto;
+  width: 90%;
+  min-height: 100%;
+  background: #ffffff;
+  border-width: 0px 1px;
+  border-color: $black;
+  border-style: solid;
+  @include shadow;
+  min-width: 500px;
+  padding-bottom: 50px;
+}
+
+img{
+  width: 400px;
+  margin: 10px;
+  margin-left: $marginLeft;
+  @include shadow;
+  @include transitionAll218;
+  &:hover{
+    @include shadowBig;
+  }
+}
+
+h1,h2,h3{
+  margin-left: $marginLeft;
+}
+
+h1{
+  padding-top: 10px;
+}
+
+h2.title{
+  margin-bottom: -5px;
+}
+
+.comment{
+  padding: 0px 10px;
+  background: $greyBackground;
+  width: 400px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  margin-top: 10px;
+  margin-left: $marginLeft;
+  .title{
+    font-weight: bold;
+  }
+  .user{
+    color: $grey;
+    font-size: 0.9em;
+    .name{
+      font-weight: bold;
+      color: #333;
+    }
+  }
+  .content{
+    padding: 5px 0px;
+  }
+  hr{
+    margin: 5px 0px;
+    border: 1px solid $black;
+    position: relative;
+    width: 430px;
+  }
+}
+
+
+.formContainer{
+  position: relative;
+  width: 400px;
+  margin-left: $marginLeft;
+  padding: 10px;
+  margin-top: 20px;
+  background: #dff0d8;
+  @include radius;
+  
+  .shim{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: #333;
+    opacity: 0.5;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    @include radius;
+    display: block;
+  }
+  .message{
+    background: #fff;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    margin: 0 auto;
+    width: 220px;
+    top: 30%;
+    //left: calc(50%-110px);
+    left: 80px;
+    color: #000;
+    font-weight: bold;
+    @include radius;
+    @include shadowBig;
+    z-index: 2;
+  }
+  
+  form,.form{
+    position: relative;
+    .hdr{
+      margin-left: 0px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    
+    fieldset{
+      border: none;
+      position: relative;
+    }
+    ul{
+      list-style: none;
+      li{
+          
+        &.field{
+          margin: 3px 0px 10px 0px;
+        }
+      }
+    }
+    input[type=text]{
+      padding: 10px;
+      width: 375px;
+      &:focus{
+        outline-color: $bootstrapBlue;
+      }
+    }
+    textarea{
+      padding: 10px;
+      width: 375px;
+      min-height: 100px;
+      &:focus{
+        outline-color: $bootstrapBlue;
+      }
+    }
+    
+    input[type=submit]{
+      position: relative;
+      left: 100%;
+      width: 75px;
+      margin-left: -78px;
+      margin-top: 5px;
+      margin-right: 2px;
+      @include button;
+    }
+  }
+  .form{
+    opacity: 0.3;
+  }
+  
+}
+
+.nav{
+  position: relative;
+  top: 5px;
+  background: #ffffff;
+  @include radius;
+  padding: 10px;
+  text-align: right;
+  .user{
+    font-weight: bold;
+  }
+}
+
+a{
+  color: #007ECC;
+  color: #357AE8;
+  text-decoration: none;
+  @include transitionAll218;
+  @include radius;
+  padding: 5px;
+  
+  &:visited{
+    color: #80c;
+  }
+  &:hover{
+    color: #fff;
+    background: #357AE8;
+    -webkit-box-shadow: 0 1px 3px rgba(53,122,232,1.0);
+    -moz-box-shadow:    0 1px 3px rgba(53,122,232,1.0);
+    box-shadow:         0 1px 3px rgba(53,122,232,1.0);
+  }
+  &:active{
+    background: #357AE8;
+    color: #fff;
+    box-shadow:         inset 0px 0px 3px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow:    inset 0px 0px 3px rgba(0, 0, 0, 0.8);
+    -webkit-box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.8);
+  }
+}
